@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Previsão do tempo</title>
+</head>
+<body>
+  <div id="weather"></div>
+  <script src="https://api.openweathermap.org/data/2.5/weather?q=Luanda,Angola&appid=950f36ac70fa946ab94c20569a25d690"></script>
+  <script> 
+function getWeather() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=Luanda,Angola&appid=950f36ac70fa946ab94c20569a25d690");
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      var weatherData = JSON.parse(xhr.responseText);
+      var weather = weatherData.weather[0];
+      var temperature = weather.main.temp;
+      var description = weather.description;
+      var icon = weather.icon;
+
+      document.getElementById("weather").innerHTML =
+        `<div class="weather">
+          <p class="temperature">Temperatura: ${temperature}°C</p>
+          <p class="description">Descrição: ${description}</p>
+          <img src="https://openweathermap.org/img/wn/${icon}.png" alt="Ícone do tempo">
+        </div>`;
+    } else {
+      console.log("Erro ao carregar dados meteorológicos");
+    }
+  };
+  xhr.send();
+}
+
+getWeather();
+</script>
+</body>
+</html>

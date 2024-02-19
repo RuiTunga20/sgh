@@ -1,0 +1,113 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<!-- DataTables -->
+<link href="{% static 'libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+
+<!-- Responsive datatable examples -->
+<link href="{% static 'libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="card-title">Lista de Carreira</h4>
+                                        <p class="card-title-desc">Lista de dados dos Carreira </code>.
+                                        </p>
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
+                                             <thead>
+                                                <tr>
+                                                  <th>Título</th>
+                                                  <th>Descrição</th>
+                                                  <th>Data de Início</th>
+                                                  <th>Data de Fim</th>
+                                                  <th>Prioridade</th>
+                                                  <th>Estado</th>
+                                                   <th>Conclusão</th>
+                                                    <th>Aprovado</th>
+                                                    <th>Data de Aprovação</th>
+                                                    <th>Responsável</th>
+
+
+
+
+
+                                                  <th>Ações</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                {% for tarefa in tarefas %}
+                                                <tr>
+                                                  <td>{{ tarefa.titulo }}</td>
+                                                  <td>{{ tarefa.descricao }}</td>
+                                                  <td>{{ tarefa.data_inicio }}</td>
+                                                  <td>{{ tarefa.data_fim }}</td>
+                                                  <td>{{ tarefa.prioridade }}</td>
+                                                  <td>{{ tarefa.estado }}</td>
+                                                    <td>{{ tarefa.data_estado }}</td>
+                                                    <td>{{ tarefa.Aprovado }}</td>
+                                                    <td>{{ tarefa.data_atualizado }}</td>
+                                                    <td>
+
+                                                     {% for responsabilidade in tarefa.hierarquia_responsabilidade.all %}
+                                                             {{ responsabilidade }}&nbsp;|
+                                                        {% endfor %}
+                                                    </td>
+
+
+
+
+                                                  <td>
+                                                  
+                                                    {% if request.user.is_superuser %}
+                                                    <a class="btn btn-info waves-effect waves-light" href="{% url 'delegar_tarefa' tarefa.id %}" role="button">Delegar</a>
+                                                    <a class="btn btn-primary waves-effect waves-light" href="{% url 'tarefa_editar' tarefa.id %}" role="button">Editar</a>
+                                                      <a class="btn btn-success waves-effect waves-light" href="{% url 'concluida' tarefa.id %}" role="button">Concluida</a>
+                                                      <a class="btn btn-success waves-effect waves-light" href="{% url 'aprovado' tarefa.id %}" role="button">Aprovado</a>
+
+                                                      <a class="btn btn-danger waves-effect waves-light" href="{% url 'tarefa_eliminar' tarefa.id %}" role="button">Eliminar</a>
+                                                      {% else %}
+                                                      <a class="btn btn-success waves-effect waves-light" href="{% url 'concluida' tarefa.id %}" role="button">Concluida</a>
+
+                                                      {% endif %}
+                                                  </td>
+                                                </tr>
+                                                {% endfor %}
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div>
+{% endblock %}
+
+{% block extra_javascript %}
+
+        <!-- Required datatable js -->
+        <script src="{% static 'libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'libs/jszip/dist/jszip.min.js' %}"></script>
+        <script src="{% static 'libs/pdfmake/build/pdfmake.min.js' %}"></script>
+        <script src="{% static 'libs/pdfmake/build/vfs_fonts.js' %}"></script>
+        <script src="{% static 'libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+        <script src="{% static 'libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
+        <!-- Responsive examples -->
+        <script src="{% static 'libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js' %}"></script>
+
+        <!-- Datatable init js -->
+        <script src="{% static 'js/pages/datatables.init.js' %}"></script>
+
+{% endblock %} 

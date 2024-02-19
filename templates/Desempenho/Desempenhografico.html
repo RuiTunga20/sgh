@@ -1,0 +1,291 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+     
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Line Chart</h4>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas}}</h5>
+                        <p class="text-muted">Tarefas</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas_pendentes}}</h5>
+                            <p class="text-muted">Pendentes</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas_concluídas}}</h5>
+                        <p class="text-muted">Concluidas</p>
+                        </div>
+                    </div>
+                     <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{percentagem}}%</h5>
+                        <p class="text-muted">Percentagem,</p>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="lineChart" height="300"></canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Bar Chart</h4>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">2541</h5>
+                        <p class="text-muted">Activated</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">84845</h5>
+                            <p class="text-muted">Pending</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">12001</h5>
+                        <p class="text-muted">Deactivated</p>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="bar" height="300"></canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Autoavaliação </h4>
+
+                <div class="row justify-content-center">
+                   <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas}}</h5>
+                        <p class="text-muted">Tarefas</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas_pendentes}}</h5>
+                            <p class="text-muted">Pendentes</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas_concluídas}}</h5>
+                        <p class="text-muted">Concluidas</p>
+                        </div>
+                    </div>
+                     <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{percentagem}}%</h5>
+                        <p class="text-muted">Percentagem</p>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="pie" height="260"></canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Avaliação supervisionada </h4>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas}}</h5>
+                        <p class="text-muted">Tarefas</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{pendenteD}}</h5>
+                            <p class="text-muted">Pendentes</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{tarefas_Aprovadas}}</h5>
+                        <p class="text-muted">Aprovadas</p>
+                        </div>
+                    </div>
+                     <div class="col-sm-3">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">{{percentagemD}}%</h5>
+                        <p class="text-muted">Percentagem</p>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="doughnut" height="260"></canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Polar Chart</h4>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">4852</h5>
+                        <p class="text-muted">Activated</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">3652</h5>
+                            <p class="text-muted">Pending</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">85412</h5>
+                        <p class="text-muted">Deactivated</p>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="polarArea" height="300"> </canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Radar Chart</h4>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">694</h5>
+                        <p class="text-muted">Activated</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">55210</h5>
+                            <p class="text-muted">Pending</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h5 class="mb-0 font-size-20">489498</h5>
+                        <p class="text-muted">Deactivated</p>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="radar" height="300"></canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+{% endblock %}                                            
+
+{% block extra_javascript %}
+
+
+        <!-- Chart JS -->
+        <script src="{% static 'libs/chart.js/dist/Chart.bundle.min.js' %}"></script>
+        <script src="{% static 'js/pages/chartjs.init.js' %}"></script>
+        <script src="{% static 'js/pages/morris.init.js' %}"></script>
+
+<script>
+        $(document).ready(function () {
+            // Função para editar o valor do gráfico Pie
+            function editarGraficoPie() {
+                var pieData = {
+                    labels: ["Pendentes", "Concluidas"],
+                    datasets: [{
+                        data: [{{tarefas_pendentes}}, {{tarefas_concluídas}}], // Novos valores para Activated, Pending, Deactivated
+                        backgroundColor: [  "#ec4561","#02a499",]
+                    }]
+                };
+
+                // Atualizar o gráfico Pie
+                var pieChart = new Chart($("#pie"), {
+                    type: 'pie',
+                    data: pieData
+                });
+            }
+
+            // Chame a função para editar o gráfico quando necessário
+            editarGraficoPie();
+        });
+
+
+      $(document).ready(function () {
+            // Função para editar o valor do gráfico Pie
+            function editarGraficoPie() {
+                var pieData = {
+                    labels: ["Pendentes", "Aprovada"],
+                    datasets: [{
+                        data: [{{pendenteD}}, {{tarefas_Aprovadas}}], // Novos valores para Activated, Pending, Deactivated
+                        backgroundColor: [  "#ec4561","#02a499",]
+                    }]
+                };
+
+                // Atualizar o gráfico Pie
+                var pieChart = new Chart($("#doughnut"), {
+                    type: 'doughnut',
+                    data: pieData
+                });
+            }
+
+            // Chame a função para editar o gráfico quando necessário
+            editarGraficoPie();
+        });
+
+
+
+    </script>
+
+
+{% endblock %} 

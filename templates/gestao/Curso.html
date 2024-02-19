@@ -1,0 +1,51 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-3">
+        <!-- end card -->
+    </div>
+
+    <!-- end col -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Curso</h4>
+                <p class="card-title-desc"></p>
+                <form class="row g-3 needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    {{formulario|crispy}}<!-- end col -->
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+                <!-- end form -->
+            </div>
+            <!-- end cardbody -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+
+        <div class="col-lg-3">
+        <!-- end card -->
+    </div>
+
+</div>
+<!-- end row -->
+
+
+{% endblock %}
+
+{% block extra_javascript %}
+
+        <script src="{% static 'libs/parsleyjs/dist/parsley.min.js' %}"></script>
+
+        <script src="{% static 'js/pages/form-validation.init.js' %}"></script>
+
+{% endblock %}
