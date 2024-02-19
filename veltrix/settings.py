@@ -192,7 +192,7 @@ ACCOUNT_FORMS = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'sgh.infranet.co.ao'  # Replace with your actual incoming server hostname
-EMAIL_PORT = 993  # Use IMAP port for incoming mail
+EMAIL_PORT = 465  # Use IMAP port for incoming mail
 EMAIL_USE_TLS = True  # Required for secure communication
 EMAIL_HOST_USER = 'sgh@sgh.infranet.co.ao'  # Replace with your email address
 EMAIL_HOST_PASSWORD = '@10102015Rt@'  # Replace with your email password
