@@ -26,7 +26,7 @@ SECRET_KEY = '6(t=d&-!$i%i$_6nuc1$mou+w#29jp50!y^w%7k9l$#)i&#&6a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://sgh.infranet.co.ao','sgh.infranet.co.ao','www.sgh.infranet.co.ao','*']
+ALLOWED_HOSTS = ['sgh.infranet.co.ao']
 
 
 # Application definition
@@ -189,13 +189,14 @@ ACCOUNT_FORMS = {
 }
 
 # SMTP Configure
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.mailtrap.io"
-EMAIL_PORT = 2525
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "1f37cfc80405c5"
-EMAIL_HOST_PASSWORD = "5f7e38f28ae814"
-DEFAULT_FROM_EMAIL = "1f37cfc80405c5"
+EMAIL_HOST = 'sgh.infranet.co.ao'  # Replace with your actual incoming server hostname
+EMAIL_PORT = 993  # Use IMAP port for incoming mail
+EMAIL_USE_TLS = True  # Required for secure communication
+EMAIL_HOST_USER = 'sgh@sgh.infranet.co.ao'  # Replace with your email address
+EMAIL_HOST_PASSWORD = '@10102015Rt@'  # Replace with your email password
+DEFAULT_FROM_EMAIL = 'sgh@sgh.infranet.co.ao'  # Replace with your desired sender email
 
 
 SITE_ID = 1
