@@ -80,7 +80,7 @@ def tarefa_aprovada(request, pk):
     try:
         tarefa.save()
     except Exception as e:
-        print(e)
+        pass
     return redirect('tarefa_listar')
 
 
@@ -143,7 +143,6 @@ def Desempenho(request):
         'percentagemD':percentagemD,
         'pendenteD':pendenteD,
     }
-    print(tarefas,tarefas_Aprovadas)
 
     meses = dict(enumerate(calendar.month_name))
 
@@ -152,7 +151,6 @@ def Desempenho(request):
         numero_do_mes = item['mes']
         total = item['total']
         nome_do_mes = meses.get(numero_do_mes, 'Mês Desconhecido')
-        print(f"Tarefas feitas no mês de {nome_do_mes}: {total}")
 
     return render(request, 'Desempenho/Desempenhografico.html',context)
 

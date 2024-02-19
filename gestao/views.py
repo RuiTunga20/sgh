@@ -109,7 +109,6 @@ def Listar_NivelCarreira(request):
     context = {
         'nivelcarreira': nivelcarreiras,
     }
-    print(nivelcarreiras)
     return render(request, 'gestao/NivelLista.html', context)
 
 

@@ -26,7 +26,7 @@ SECRET_KEY = '6(t=d&-!$i%i$_6nuc1$mou+w#29jp50!y^w%7k9l$#)i&#&6a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sgh.infranet.co.ao']
+ALLOWED_HOSTS = ['sgh.infranet.co.ao','127.0.0.1','*']
 
 
 # Application definition
